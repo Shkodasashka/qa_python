@@ -1,0 +1,7 @@
+__pycache__/main.cpython-313.pyc
+__pycache__/main.cpython-38.pyc
+__pycache__/test.cpython-38-pytest-7.1.2.pyc
+**.pyc
+__pycache__/conftest.cpython-313-pytest-8.4.2.pyc
+.coverage
+__pycache__/test_main.cpython-313-pytest-8.4.2.pyc
