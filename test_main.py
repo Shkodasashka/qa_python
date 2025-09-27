@@ -63,5 +63,9 @@ class TestBooksCollector:
 
         assert  book.books_genre['Марсианин'] == ''     
 
+    def test_get_book_genre_get_genre(self, book):
 
+        book.books_genre['Марсианин']='Фантастика'
+
+        assert book.books_genre.get('Марсианин') == 'Фантастика'
 
