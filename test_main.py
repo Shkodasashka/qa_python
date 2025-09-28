@@ -58,7 +58,7 @@ class TestBooksCollector:
 
         assert  book.books_genre['Марсианин'] == 'Фантастика'          
 
-    def test_set_book_genre_neggative_add_genre_for_missing_book(self, book):
+    def test_set_book_genre_neggative_add_genre_for_unknown_book(self, book):
 
         book.set_book_genre('Марсианин','Боевик')
 
@@ -130,7 +130,12 @@ class TestBooksCollector:
         book.favorites=['Проект Аве Мария','Марсианин']
         book.delete_book_from_favorites('Проект Аве Мария')
 
-        assert (len(book.favorites)) == 1 and ('Марсианин' in book.favorites)
+        assert (len(book.favorites) == 1) and ('Марсианин' in book.favorites)
 
+    def test_get_list_of_favorites_books_get_list_of_favorites_books(self, book):
+
+        book.favorites=['Проект Аве Мария','Марсианин']
+
+        assert (len(book.get_list_of_favorites_books()) == 2) and ('Марсианин' in book.get_list_of_favorites_books()) and ('Проект Аве Мария' in book.get_list_of_favorites_books())
 
 
