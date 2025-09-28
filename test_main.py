@@ -85,4 +85,13 @@ class TestBooksCollector:
         
         assert (len(list_of_book)==2) and ('Марсианин' in list_of_book) and ('Проект Аве Мария' in list_of_book)
 
+    def test_get_books_genre_get_list_of_books(self, book):
+
+        dict_of_books={'Марсианин':'Фантастика', 'Тачки':'Мультфильмы', 'Проект Аве Мария':'Фантастика'}
+        book.books_genre.update(dict_of_books)
+        list_of_book=book.get_books_genre()
+
+        assert (len(list_of_book) == 3) and (list_of_book['Марсианин']=='Фантастика') and (list_of_book['Тачки']=='Мультфильмы') and (list_of_book['Проект Аве Мария']=='Фантастика')
+
+
 
