@@ -93,5 +93,10 @@ class TestBooksCollector:
 
         assert (len(list_of_book) == 3) and (list_of_book['Марсианин']=='Фантастика') and (list_of_book['Тачки']=='Мультфильмы') and (list_of_book['Проект Аве Мария']=='Фантастика')
 
+    def test_get_books_for_children_get_book_without_adult_genre(self, book):
 
+        dict_of_books={'Марсианин':'Фантастика', 'Десять негритят':'Детективы', 'Оно':'Ужасы'}
+        book.books_genre.update(dict_of_books)
+
+        assert (len(book.get_books_for_children()) == 1) and ('Марсианин' in book.get_books_for_children())
 
