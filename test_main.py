@@ -30,10 +30,18 @@ class TestBooksCollector:
 
         assert len(book.books_genre) == 1
 
-    def test_add_new_book_neggative_add_book_name_out_of_range(self, book):
 
-        book.add_new_book('')
-        book.add_new_book('Четыреста пятьдесят один градус по Фаренгейту')
+    @pytest.mark.parametrize(
+        'name_of_book',            
+        [
+        '',
+        'Келлская книга:тайны древних манускриптов',
+        'Четыреста пятьдесят один градус по Фаренгейту'
+        ]
+    )
+    def test_add_new_book_neggative_add_book_name_out_of_range(self, book, name_of_book):
+
+        book.add_new_book(name_of_book)
 
         assert len(book.books_genre) == 0        
 
@@ -67,5 +75,14 @@ class TestBooksCollector:
 
         book.books_genre['Марсианин']='Фантастика'
 
-        assert book.books_genre.get('Марсианин') == 'Фантастика'
+        assert book.get_book_genre('Марсианин') == 'Фантастика'
+
+    def test_get_books_with_specific_genre_get_books_fantastic(self, book):
+
+        dict_of_books={'Марсианин':'Фантастика', 'Тачки':'Мультфильмы', 'Проект Аве Мария':'Фантастика'}
+        book.books_genre.update(dict_of_books)
+        list_of_book=book.get_books_with_specific_genre('Фантастика')
+        
+        assert (len(list_of_book)==2) and ('Марсианин' in list_of_book) and ('Проект Аве Мария' in list_of_book)
+
 
