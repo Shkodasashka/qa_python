@@ -100,3 +100,27 @@ class TestBooksCollector:
 
         assert (len(book.get_books_for_children()) == 1) and ('Марсианин' in book.get_books_for_children())
 
+    def test_add_book_in_favorites_add_two_books(self, book):
+
+        dict_of_books={'Марсианин':'Фантастика', 'Тачки':'Мультфильмы', 'Проект Аве Мария':'Фантастика'}
+        book.books_genre.update(dict_of_books)
+        book.add_book_in_favorites('Марсианин')
+        book.add_book_in_favorites('Проект Аве Мария')
+
+
+        assert len(book.favorites) == 2
+
+    def test_add_book_in_favorites_neggative_add_unknowbook_in_favourites(self, book):
+
+        book.add_book_in_favorites('Мечтают ли андроиды об электроовцах')
+
+        assert len(book.favorites) == 0
+
+    def test_add_book_in_favorites_neggative_add_same_book_in_favourites(self, book):
+
+        dict_of_books={'Марсианин':'Фантастика', 'Тачки':'Мультфильмы', 'Проект Аве Мария':'Фантастика'}
+        book.books_genre.update(dict_of_books)
+        book.add_book_in_favorites('Марсианин')
+        book.add_book_in_favorites('Марсианин')
+
+        assert len(book.favorites) == 1
