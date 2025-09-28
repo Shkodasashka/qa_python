@@ -124,3 +124,13 @@ class TestBooksCollector:
         book.add_book_in_favorites('Марсианин')
 
         assert len(book.favorites) == 1
+
+    def test_delete_book_from_favorites_delete_one_book(self, book):
+
+        book.favorites=['Проект Аве Мария','Марсианин']
+        book.delete_book_from_favorites('Проект Аве Мария')
+
+        assert (len(book.favorites)) == 1 and ('Марсианин' in book.favorites)
+
+
+
